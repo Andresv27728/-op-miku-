@@ -3,7 +3,7 @@ import chalk from 'chalk'
 import { fileURLToPath } from 'url'
 
 global.owner = [
-  ['51999999999', 'CREATOR', true],
+  ['573133374132', 'CREATOR', true],
 ]
 global.botName = 'Hatsune Miku Bot'
 global.packname = 'Hatsune Miku'
