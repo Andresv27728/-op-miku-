@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: hatsune-miku-bot
+    env: node
+    plan: free # Or your desired plan
+    buildCommand: 'npm install'
+    startCommand: 'npm start'
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 18.17.1
+      - key: DATA_DIR
+        value: /app/data
+    disk:
+      name: bot-data
+      mountPath: /app/data
+      sizeGB: 1

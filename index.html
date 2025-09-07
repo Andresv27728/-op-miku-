@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hatsune Miku Bot - Dashboard</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f8ff; color: #333; text-align: center; padding-top: 50px; }
+        h1 { color: #00bfff; }
+        #status { font-size: 1.2em; font-weight: bold; }
+        .connected { color: #2e8b57; }
+        .disconnected { color: #dc143c; }
+        #stats { margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h1>Hatsune Miku Bot 🎤</h1>
+    <div id="status" class="disconnected">Disconnected</div>
+    <div id="stats">
+        <p>Messages Received: <span id="messagesReceived">0</span></p>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        const statusDiv = document.getElementById('status');
+        const messagesReceivedSpan = document.getElementById('messagesReceived');
+
+        socket.on('status', (status) => {
+            if (status === 'connected') {
+                statusDiv.textContent = 'Connected';
+                statusDiv.className = 'connected';
+            } else {
+                statusDiv.textContent = 'Disconnected';
+                statusDiv.className = 'disconnected';
+            }
+        });
+
+        socket.on('stats', (data) => {
+            messagesReceivedSpan.textContent = data.messagesReceived;
+        });
+    </script>
+</body>
+</html>
