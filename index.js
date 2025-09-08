@@ -10,7 +10,17 @@ import chalk from 'chalk'
 import { handler } from './lib/handler.js'
 import { join } from 'path'
 
-const logger = pino({ level: 'silent' })
+const logger = pino({
+  transport: {
+    target: 'pino-pretty',
+    options: {
+      colorize: true,
+      levelFirst: true,
+      ignore: 'pid,hostname',
+    }
+  },
+  level: 'info'
+})
 
 const app = express()
 const server = http.createServer(app)
