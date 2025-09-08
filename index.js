@@ -1,5 +1,5 @@
 import './config.js'
-import { default as makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers } from '@whiskeysockets/baileys'
+import makeWASocket, { useMultiFileAuthState, DisconnectReason, Browsers } from '@whiskeysockets/baileys'
 import pino from 'pino'
 import { Boom } from '@hapi/boom'
 import express from 'express'
